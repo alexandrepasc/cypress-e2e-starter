@@ -6,7 +6,11 @@
 	"license": "MIT",
 	"scripts": {
 		"cy:open": "cypress open --e2e",
-		"cy:run": "cypress run --e2e"
+		"cy:open:chrome": "cypress open --e2e --browser chrome",
+		"cy:open:firefox": "cypress open --e2e --browser firefox",
+		"cy:run": "cypress run --e2e",
+		"cy:run:chrome": "cypress run --e2e --browser chrome",
+		"cy:run:firefox": "cypress run --e2e --browser firefox"
 	},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^6.2.0",
