@@ -57,6 +57,16 @@
 			"error",
 			{ "multiline": true }
 		],
+		"@typescript-eslint/typedef": [
+			"error",
+			{
+				"variableDeclaration": true,
+				"variableDeclarationIgnoreFunction": false,
+				"arrowParameter": true,
+				"parameter": true,
+				"propertyDeclaration": true
+			}
+		],
 		"operator-linebreak": ["error", "after"],
         "cypress/no-assigning-return-values": "error",
         "cypress/no-unnecessary-waiting": "error",
