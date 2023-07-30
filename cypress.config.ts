@@ -5,10 +5,10 @@ export default defineConfig({
 	viewportWidth: 1920,
 	viewportHeight: 1080,
 	e2e: {
-		baseUrl: 'https://example.cypress.io',
+		baseUrl: 'https://www.google.com',
 		experimentalRunAllSpecs: true,
-		setupNodeEvents(on, config) {
-			// implement node event listeners here
-		},
+		// setupNodeEvents(on, config) {
+		// 	// implement node event listeners here
+		// },
 	},
 });
