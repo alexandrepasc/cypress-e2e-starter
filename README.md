@@ -32,6 +32,9 @@ In case the `setup-environment` is not executable execute the following command 
 
 The `package.json` file has some already created shortcuts to in the `scripts` section to ease the use of `Cypress`. More shortcuts can be added, or change the ones that were already created.
 
+If using the *VS Code* in some cases it will confuse the `Cypress` commands with other libraries when giving the help, to prevent this we should add 1 line at the top of every file that will have `Cypress` code. So in every file add the following line:
+- `///<reference types="cypress"/>`
+
 And it is basically it, the requirements are installed and every thing is in place to start creating and executing the tests.
 
 ## Contribute
