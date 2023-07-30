@@ -21,17 +21,32 @@ To lint the project the *ESLint* is set in place with some rules configured in t
 To be confortable using this we should have some knowledge on the OS that is using, and knowledge in the tools that are used.
 
 ## Build and Test
+Install the project dependencies, they are all defined in the `package.json`, so just run in the project root path:
+- `yarn`
+
+Execute the `setup-environment` script to set the pre-commit hook to the `.git` folder:
+- `./scripts/setup-environment.sh`
+
+In case the `setup-environment` is not executable execute the following command to give execution permissions to the file:
+- `chmod +x scripts/setup-environment.sh`
+
+The `package.json` file has some already created shortcuts to in the `scripts` section to ease the use of `Cypress`. More shortcuts can be added, or change the ones that were already created.
+
+And it is basically it, the requirements are installed and every thing is in place to start creating and executing the tests.
+
 ## Contribute
 If a you want to change, correct, improve the project create an `issue` in the project `Issues` screen with the proposal and the necessery documentation. If the proposal or correction has already the implementation developed link the branch with the change in the `issue`.
+
 ## Appendix
 
 ### Links
-- [Cypress]()
-- [Javascript]()
-- [Typescript]()
+- [Cypress](https://www.cypress.io/)
+- [Cypress configuration](https://docs.cypress.io/guides/references/configuration)
+- [Cypress typescript](https://docs.cypress.io/guides/tooling/typescript-support)
+- [Cypress plugins](https://docs.cypress.io/plugins)
+- [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [Typescript](https://www.typescriptlang.org/)
 - [ESLint](https://eslint.org/docs/latest/rules/)
-
-https://docs.cypress.io/guides/tooling/typescript-support
 
 ### Steps to create this proj from zero
 1. yarn init
