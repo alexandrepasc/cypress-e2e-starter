@@ -13,6 +13,7 @@
 		"cy:run:firefox": "cypress run --e2e --browser firefox"
 	},
 	"devDependencies": {
+		"@simonsmith/cypress-image-snapshot": "^8.0.2",
 		"@typescript-eslint/eslint-plugin": "^6.2.0",
 		"@typescript-eslint/parser": "^6.2.0",
 		"cypress": "^12.17.2",
