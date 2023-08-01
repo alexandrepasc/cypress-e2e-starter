@@ -67,7 +67,30 @@
 				"propertyDeclaration": true
 			}
 		],
-		"operator-linebreak": ["error", "after"],
+		"operator-linebreak": [
+			"error",
+			"after"
+		],
+		"dot-location": [
+			"error",
+			"property"
+		],
+		"comma-spacing": [
+			"error",
+			{ "before": false, "after": true }
+		],
+		"func-call-spacing": [
+			"error",
+			"never"
+		],
+		"key-spacing": [
+			"error",
+			{ "align": "value", "afterColon": true }
+		],
+		"newline-per-chained-call": [
+			"error",
+			{ "ignoreChainWithDepth": 1 }
+		],
         "cypress/no-assigning-return-values": "error",
         "cypress/no-unnecessary-waiting": "error",
         "cypress/assertion-before-screenshot": "warn",
