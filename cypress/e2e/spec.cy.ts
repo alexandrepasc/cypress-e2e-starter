@@ -13,7 +13,15 @@ describe('Google home', () => {
 
 	it('Elements are visible', () => {
 		home.title()
-			.should('be.visible');
+			.then(($img: JQuery<HTMLElement>) => {
+				if ($img.is(':visible')) {
+					home.title()
+						.should('be.visible');
+				} else {
+					home.titleAnimated()
+						.should('be.visible');
+				}
+			});
 
 		home.searchInput()
 			.should('be.visible')
@@ -22,5 +30,10 @@ describe('Google home', () => {
 		home.searchBtn()
 			.should('be.visible')
 			.should('be.enabled');
+	});
+
+	it('Visual test', () => {
+		home.searchInput()
+			.matchImageSnapshot();
 	});
 });
