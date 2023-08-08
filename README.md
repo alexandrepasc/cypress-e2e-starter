@@ -5,6 +5,31 @@
 	- [Build and Test](#build-and-test)
 	- [Contribute](#contribute)
 	- [Appendix](#appendix)
+		- [Rules](#rules)
+			- [indent](#indent)
+			- [linebreak-style](#linebreak-style)
+			- [quotes](#quotes)
+			- [semi](#semi)
+			- [camelcase](#camelcase)
+			- [curly](#curly)
+			- [max-len](#max-len)
+			- [no-mixed-spaces-and-tabs](#no-mixed-spaces-and-tabs)
+			- [no-trailing-spaces](#no-trailing-spaces)
+			- [no-multiple-empty-lines](#no-multiple-empty-lines)
+			- [object-curly-newline](#object-curly-newline)
+			- [@typescript-eslint/typedef](#typescript-eslinttypedef)
+			- [operator-linebreak](#operator-linebreak)
+			- [dot-location](#dot-location)
+			- [comma-spacing](#comma-spacing)
+			- [func-call-spacing](#func-call-spacing)
+			- [key-spacing](#key-spacing)
+			- [newline-per-chained-call](#newline-per-chained-call)
+			- [cypress/no-assigning-return-values](#cypressno-assigning-return-values)
+			- [cypress/no-unnecessary-waiting](#cypressno-unnecessary-waiting)
+			- [cypress/assertion-before-screenshot](#cypressassertion-before-screenshot)
+			- [cypress/no-force](#cypressno-force)
+			- [cypress/no-async-tests](#cypressno-async-tests)
+			- [cypress/no-pause](#cypressno-pause)
 		- [Links](#links)
 		- [Steps to create this proj from zero](#steps-to-create-this-proj-from-zero)
 
@@ -41,6 +66,120 @@ And it is basically it, the requirements are installed and every thing is in pla
 If a you want to change, correct, improve the project create an `issue` in the project `Issues` screen with the proposal and the necessery documentation. If the proposal or correction has already the implementation developed link the branch with the change in the `issue`.
 
 ## Appendix
+
+### Rules
+#### indent
+This rule enforces a consistent indentation style.
+- error
+- tab
+
+#### linebreak-style
+This rule enforces consistent line endings independent of operating system, VCS, or editor used across your codebase.
+- error
+- unix
+
+#### quotes
+This rule enforces the consistent use of either backticks, double, or single quotes.
+- error
+- single
+
+#### semi
+This rule enforces consistent use of semicolons.
+- error
+- always
+
+#### camelcase
+Enforce camelcase naming convention.
+- error
+
+#### curly
+This rule is aimed at preventing bugs and increasing code clarity by ensuring that block statements are wrapped in curly braces. It will warn when it encounters blocks that omit curly braces.
+- error
+- all
+
+#### max-len
+This rule enforces a maximum line length to increase code readability and maintainability. The length of a line is defined as the number of Unicode characters in the line.
+- error
+- code: 100
+
+#### no-mixed-spaces-and-tabs
+This rule disallows mixed spaces and tabs for indentation.
+- error
+
+#### no-trailing-spaces
+This rule disallows trailing whitespace (spaces, tabs, and other Unicode whitespace characters) at the end of lines.
+- error
+
+#### no-multiple-empty-lines
+This rule aims to reduce the scrolling required when reading through your code. It will warn when the maximum amount of empty lines has been exceeded.
+- error
+- max: 1
+- maxBOF: 0
+- maxEOF: 1
+
+#### object-curly-newline
+This rule requires or disallows a line break between { and its following token, and between } and its preceding token of object literals or destructuring assignments.
+- error
+- multiline: true
+
+#### @typescript-eslint/typedef
+This rule can enforce type annotations in locations regardless of whether they're required. This is typically used to maintain consistency for element types that sometimes require them.
+- error
+- "variableDeclaration": true,
+- "variableDeclarationIgnoreFunction": false,
+- "arrowParameter": true,
+- "parameter": true,
+- "propertyDeclaration": true
+
+#### operator-linebreak
+This rule enforces a consistent linebreak style for operators.
+- error
+- after
+
+#### dot-location
+This rule aims to enforce newline consistency in member expressions. This rule prevents the use of mixed newlines around the dot in a member expression.
+- error
+- property
+
+#### comma-spacing
+This rule enforces consistent spacing before and after commas in variable declarations, array literals, object literals, function parameters, and sequences.
+- error
+- "before": false
+- "after": true
+
+#### func-call-spacing
+This rule requires or disallows spaces between the function name and the opening parenthesis that calls it.
+- error
+- never
+
+#### key-spacing
+This rule enforces consistent spacing between keys and values in object literal properties. In the case of long lines, it is acceptable to add a new line wherever whitespace is allowed.
+- error
+- "align": "value"
+- "afterColon": true
+
+#### newline-per-chained-call
+This rule requires a newline after each call in a method chain or deep member access. Computed property accesses such as instance[something] are excluded.
+- error
+- "ignoreChainWithDepth": 1
+
+#### cypress/no-assigning-return-values
+- error
+
+#### cypress/no-unnecessary-waiting
+- error
+
+#### cypress/assertion-before-screenshot
+- warn
+
+#### cypress/no-force
+- warn
+
+#### cypress/no-async-tests
+- error
+
+#### cypress/no-pause
+- error
 
 ### Links
 - [Cypress](https://www.cypress.io/)
