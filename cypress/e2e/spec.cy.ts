@@ -36,4 +36,15 @@ describe('Google home', () => {
 		home.searchInput()
 			.matchImageSnapshot();
 	});
+
+	it('Test search', () => {
+		home.api.getSearch({
+			queryParameters: {q: 'a'},
+			responseCode:    200,
+			responseFile:    'get-search.json'
+		});
+
+		home.searchInput()
+			.type('a');
+	});
 });
