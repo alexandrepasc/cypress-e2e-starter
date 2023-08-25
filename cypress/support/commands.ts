@@ -1,4 +1,11 @@
 /// <reference types="cypress" />
+
+import {
+	RouteMatcherOptionsGeneric,
+	StringMatcher,
+	StaticResponse
+} from 'cypress/types/net-stubbing';
+
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
@@ -25,14 +32,31 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 //
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-// eslint-disable-next-line max-len
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
+
+declare global {
+	// eslint-disable-next-line @typescript-eslint/no-namespace
+	namespace Cypress {
+		interface Chainable {
+			//       login(email: string, password: string): Chainable<void>
+			//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
+			//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
+			// eslint-disable-next-line max-len
+			// visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
+			interceptor(props: Props): void
+		}
+	}
+}
+
+interface Props {
+	filter: RouteMatcherOptionsGeneric<StringMatcher>;
+	response?: StaticResponse,
+	name?:     string
+}
+
+Cypress.Commands.add('interceptor', (props: Props) => {
+	cy.intercept(
+		props.filter,
+		props.response
+	)
+		.as(props.name);
+});
