@@ -1,9 +1,9 @@
 /// <reference types="cypress" />
 
 import {
-	RouteMatcherOptionsGeneric,
-	StringMatcher,
-	StaticResponse
+	StaticResponse,
+	RouteMatcherOptions,
+	CyHttpMessages
 } from 'cypress/types/net-stubbing';
 
 // ***********************************************
@@ -48,15 +48,26 @@ declare global {
 }
 
 interface Props {
-	filter: RouteMatcherOptionsGeneric<StringMatcher>;
-	response?: StaticResponse,
-	name?:     string
+	filter:     RouteMatcherOptions;
+	response?:  StaticResponse,
+	reqExpect?: object[],
+	name?:      string
 }
 
 Cypress.Commands.add('interceptor', (props: Props) => {
 	cy.intercept(
 		props.filter,
-		props.response
+		(request: CyHttpMessages.IncomingHttpRequest) => {
+			if (props.reqExpect) {
+				props.reqExpect.forEach((item: object) => {
+					expect(request.body).to.nested.include(item);
+				});
+			}
+
+			if (props.response) {
+				request.reply(props.response);
+			}
+		}
 	)
 		.as(props.name);
 });
