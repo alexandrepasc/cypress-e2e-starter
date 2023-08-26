@@ -6,7 +6,7 @@ export default defineConfig({
 	viewportWidth:       1920,
 	viewportHeight:      1080,
 	e2e:                 {
-		baseUrl:                 'https://www.google.com',
+		baseUrl:                 'https://eagleeyeservice.netlify.app',
 		experimentalRunAllSpecs: true,
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		setupNodeEvents(on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions) {
