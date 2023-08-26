@@ -6,7 +6,7 @@ describe('Login test', () => {
 	const login: Login = new Login();
 
 	beforeEach(() => {
-		cy.visit('/');
+		cy.visit('/entrar/');
 	});
 
 	it('Elements are visible', () => {
@@ -24,14 +24,43 @@ describe('Login test', () => {
 	});
 
 	it('Visual testing', () => {
-		login.loginBtn()
+		login.container()
 			.matchImageSnapshot();
 	});
 
 	it('Visual testing enabled', () => {
+		login.loginBtn()
+			.click();
+
+		login.container()
+			.matchImageSnapshot();
+	});
+
+	it('Login request validation', () => {
+		login.api.postLogin({
+			reqExpect: [
+				{email: 'username'},
+				{password: 'password'}
+			]
+		});
+
 		login.fillLoginForm();
 
 		login.loginBtn()
-			.matchImageSnapshot();
+			.click();
+	});
+
+	it('Login', () => {
+		login.api.postLogin({
+			responseCode: 400,
+			responseFile: 'post-login-bad-requiest.json'
+		});
+
+		login.submitLogin('test1@mail.com', '123qweasd');
+
+		cy.wait('@postLogin');
+
+		login.title()
+			.should('be.visible');
 	});
 });

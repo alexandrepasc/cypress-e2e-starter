@@ -13,6 +13,17 @@ class Login extends Elements {
 		this.passwordInput()
 			.type('password');
 	}
+
+	submitLogin(username: string, password: string) {
+		this.usernameInput()
+			.type(username);
+
+		this.passwordInput()
+			.type(password);
+
+		this.loginBtn()
+			.click();
+	}
 }
 
 export default Login;
