@@ -2,7 +2,7 @@
 
 import Login from '../pages/login';
 
-describe('Login test', () => {
+describe.only('Login test', () => {
 	const login: Login = new Login();
 
 	beforeEach(() => {
