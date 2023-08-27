@@ -2,7 +2,7 @@
 
 import Login from '../pages/login';
 
-describe.only('Login test', () => {
+describe('Login test', () => {
 	const login: Login = new Login();
 
 	beforeEach(() => {
@@ -54,7 +54,7 @@ describe.only('Login test', () => {
 			.click();
 	});
 
-	it.only('Login', () => {
+	it('Login', () => {
 
 		login.api.postLogin({
 			responseCode: 400,
@@ -69,7 +69,7 @@ describe.only('Login test', () => {
 			.should('be.visible');
 	});
 
-	it.only('Login fail response', () => {
+	it('Login fail response', () => {
 		login.api.postLogin({
 			resExpect: [
 				{'non_field_errors[0].message': 'Unable to log in with provided credentials.'},

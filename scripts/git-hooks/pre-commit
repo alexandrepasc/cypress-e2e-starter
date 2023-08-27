@@ -2,9 +2,7 @@
 
 STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep "\.ts\{0,1\}$")
 
-# if grep -q "it.only" "cypress/e2e/login.cy.ts"; then
-#   echo "Remove the only from the test file."
-# fi
+FILE_PATH="$(dirname "$(realpath $0)")"
 
 if [[ "$STAGED_FILES" = "" ]]; then
   exit 0
@@ -23,19 +21,12 @@ fi
 
 for FILE in $STAGED_FILES
 do
+  FILE_HELP="$FILE_PATH/../../$FILE"
 
-  
-
-  if grep -q "it.only(" "$File"; then
-    echo "Remove the only from the test file."
+  if grep -q "it.only(" "$FILE_HELP" || grep -q "describe.only(" "$FILE_HELP"; then
+    echo "Remove the only from the test file $FILE."
 	PASS=false
   fi
-
-  if grep -q "describe.only(" "$File"; then
-    echo "Remove the only from the test file."
-	PASS=false
-  fi
-  exit 0
 
   eslint "$FILE"
 
