@@ -1,10 +1,7 @@
 /// <reference types="cypress" />
 
-import {
-	StaticResponse,
-	RouteMatcherOptions,
-	CyHttpMessages
-} from 'cypress/types/net-stubbing';
+import {CyHttpMessages} from 'cypress/types/net-stubbing';
+import { InterceptorProps } from './types';
 
 // ***********************************************
 // This example commands.ts shows you how to
@@ -42,19 +39,12 @@ declare global {
 			//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
 			// eslint-disable-next-line max-len
 			// visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-			interceptor(props: Props): void
+			interceptor(props: InterceptorProps): void
 		}
 	}
 }
 
-interface Props {
-	filter:     RouteMatcherOptions;
-	response?:  StaticResponse,
-	reqExpect?: object[],
-	name?:      string
-}
-
-Cypress.Commands.add('interceptor', (props: Props) => {
+Cypress.Commands.add('interceptor', (props: InterceptorProps) => {
 	cy.intercept(
 		props.filter,
 		(request: CyHttpMessages.IncomingHttpRequest) => {
@@ -64,8 +54,16 @@ Cypress.Commands.add('interceptor', (props: Props) => {
 				});
 			}
 
-			if (props.response) {
+			if (props.response && props.response != undefined) {
 				request.reply(props.response);
+			} else {
+				if (props.resExpect) {
+					request.continue((response: CyHttpMessages.IncomingHttpResponse) => {
+						props.resExpect.forEach((item: object) => {
+							expect(response.body).to.nested.include(item);
+						});
+					});
+				}
 			}
 		}
 	)

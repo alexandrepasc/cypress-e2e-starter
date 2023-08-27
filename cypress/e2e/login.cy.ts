@@ -10,6 +10,7 @@ describe('Login test', () => {
 	});
 
 	it('Elements are visible', () => {
+
 		login.title()
 			.should('be.visible');
 
@@ -24,11 +25,13 @@ describe('Login test', () => {
 	});
 
 	it('Visual testing', () => {
+
 		login.container()
 			.matchImageSnapshot();
 	});
 
 	it('Visual testing enabled', () => {
+
 		login.loginBtn()
 			.click();
 
@@ -37,6 +40,7 @@ describe('Login test', () => {
 	});
 
 	it('Login request validation', () => {
+
 		login.api.postLogin({
 			reqExpect: [
 				{email: 'username'},
@@ -51,9 +55,10 @@ describe('Login test', () => {
 	});
 
 	it('Login', () => {
+
 		login.api.postLogin({
 			responseCode: 400,
-			responseFile: 'post-login-bad-requiest.json'
+			responseFile: 'post-login-bad-request.json'
 		});
 
 		login.submitLogin('test1@mail.com', '123qweasd');
@@ -62,5 +67,16 @@ describe('Login test', () => {
 
 		login.title()
 			.should('be.visible');
+	});
+
+	it.only('Login fail response', () => {
+		login.api.postLogin({
+			resExpect: [
+				{'non_field_errors[0].message': 'Unable to log in with provided credentials.'},
+				{'non_field_errors[0].code': 'invalid'}
+			]
+		});
+
+		login.submitLogin('invalid', 'invalid');
 	});
 });
