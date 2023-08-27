@@ -54,7 +54,7 @@ describe.only('Login test', () => {
 			.click();
 	});
 
-	it('Login', () => {
+	it.only('Login', () => {
 
 		login.api.postLogin({
 			responseCode: 400,
