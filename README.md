@@ -1,8 +1,11 @@
 # cypress-e2e-starter
+<!-- TOC -->
+
 - [cypress-e2e-starter](#cypress-e2e-starter)
 	- [Introduction](#introduction)
 	- [Getting Started](#getting-started)
 	- [Build and Test](#build-and-test)
+		- [Store Credentials](#store-credentials)
 	- [Contribute](#contribute)
 	- [Appendix](#appendix)
 		- [Rules](#rules)
@@ -33,6 +36,8 @@
 		- [Links](#links)
 		- [Steps to create this proj from zero](#steps-to-create-this-proj-from-zero)
 
+<!-- /TOC -->
+
 ## Introduction
 Thhe objective of this project is to have a starter project that can be used when a new `Cypress` testing project needs to be created. This can be used completelly if the new test project is independent from the development one, in the other case this can also be used as a guide.
 
@@ -61,6 +66,29 @@ If using the *VS Code* in some cases it will confuse the `Cypress` commands with
 - `///<reference types="cypress"/>`
 
 And it is basically it, the requirements are installed and every thing is in place to start creating and executing the tests.
+
+### Store Credentials
+It is not a good practice to store credentials to the test environment in the code, since this way they are store in every computer that can clone the project in plaine text. A better approach to this that can leverage functionalities from the CI/CD tools is to use environment variables, not the environment variables stored in `Cypress` config file but the `OS` ones. They can be stored in the CI/CD tool and even can be stored as not readable by the users.
+
+`Cypress` can read automatically the `OS` environment variables if we create the variables starting with `CYPRESS_` or `cypress_`, and we can retrieve the values the same way as if we created them in the configuration file.
+
+For example:
+```
+export CYPRESS_HOST=dev.local
+export cypress_api_server=http://localhost:8888/api/v1/
+```
+Can retrieve the values:
+```
+Cypress.env()
+Cypress.env('HOST')
+Cypress.env('api_server') 
+```
+
+If we need to have access to the values in the configuration file, if they need to be used in a `task`, we can use the following:
+```
+config.env.HOST
+config.env.api_server
+```
 
 ## Contribute
 If a you want to change, correct, improve the project create an `issue` in the project `Issues` screen with the proposal and the necessery documentation. If the proposal or correction has already the implementation developed link the branch with the change in the `issue`.
@@ -186,6 +214,7 @@ This rule requires a newline after each call in a method chain or deep member ac
 - [Cypress configuration](https://docs.cypress.io/guides/references/configuration)
 - [Cypress typescript](https://docs.cypress.io/guides/tooling/typescript-support)
 - [Cypress plugins](https://docs.cypress.io/plugins)
+- [Cypress Environment Variables](https://docs.cypress.io/guides/guides/environment-variables)
 - [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [Typescript](https://www.typescriptlang.org/)
 - [ESLint](https://eslint.org/docs/latest/rules/)
