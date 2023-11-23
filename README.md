@@ -6,6 +6,7 @@
 	- [Getting Started](#getting-started)
 	- [Build and Test](#build-and-test)
 		- [Store Credentials](#store-credentials)
+		- [Postgres Connection](#postgres-connection)
 	- [Contribute](#contribute)
 	- [Appendix](#appendix)
 		- [Rules](#rules)
@@ -39,16 +40,16 @@
 <!-- /TOC -->
 
 ## Introduction
-Thhe objective of this project is to have a starter project that can be used when a new `Cypress` testing project needs to be created. This can be used completelly if the new test project is independent from the development one, in the other case this can also be used as a guide.
+The objective of this project is to have a starter project that can be used when a new `Cypress` testing project needs to be created. This can be used completely if the new test project is independent from the development one, in the other case this can also be used as a guide.
 
 ## Getting Started
-To be able to use this project [Node.js](https://nodejs.org/en) and [yarn](https://classic.yarnpkg.com/lang/en/) need to be installed. This project is done using `Typescript` so to be able to use it some knowledge of *javascript*, *typescript*, and how to use `Cypress`. All the information/intructions in this document will be using a `GNU/Linux` operating system.
+To be able to use this project [Node.js](https://nodejs.org/en) and [yarn](https://classic.yarnpkg.com/lang/en/) need to be installed. This project is done using `Typescript` so to be able to use it some knowledge of *javascript*, *typescript*, and how to use `Cypress`. All the information/instructions in this document will be using a `GNU/Linux` operating system.
 
-This project, besides the main objective descibed in the [Introduction](#introduction), has the idea of setting some structure to organize the files, linting rules to have the code clean, and to imlpement the `Page Object Model (POM)`.
+This project, besides the main objective described in the [Introduction](#introduction), has the idea of setting some structure to organize the files, linting rules to have the code clean, and to implement the `Page Object Model (POM)`.
 
-To lint the project the *ESLint* is set in place with some rules configured in the file `.eslintrc.json` and the rules could be changed, removed or add more. If the *IDE* used is the *VS Code* the [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extension could be installed and configured to give feedback if some rule is broken. Some *VS Code* configurations are already commited in the project, as some configurations for the extension.
+To lint the project the *ESLint* is set in place with some rules configured in the file `.eslintrc.json` and the rules could be changed, removed or add more. If the *IDE* used is the *VS Code* the [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extension could be installed and configured to give feedback if some rule is broken. Some *VS Code* configurations are already committed in the project, as some configurations for the extension.
 
-To be confortable using this we should have some knowledge on the OS that is using, and knowledge in the tools that are used.
+To be comfortable using this we should have some knowledge on the OS that is using, and knowledge in the tools that are used.
 
 ## Build and Test
 Install the project dependencies, they are all defined in the `package.json`, so just run in the project root path:
@@ -68,7 +69,7 @@ If using the *VS Code* in some cases it will confuse the `Cypress` commands with
 And it is basically it, the requirements are installed and every thing is in place to start creating and executing the tests.
 
 ### Store Credentials
-It is not a good practice to store credentials to the test environment in the code, since this way they are store in every computer that can clone the project in plaine text. A better approach to this that can leverage functionalities from the CI/CD tools is to use environment variables, not the environment variables stored in `Cypress` config file but the `OS` ones. They can be stored in the CI/CD tool and even can be stored as not readable by the users.
+It is not a good practice to store credentials to the test environment in the code, since this way they are store in every computer that can clone the project in plain text. A better approach to this that can leverage functionalities from the CI/CD tools is to use environment variables, not the environment variables stored in `Cypress` config file but the `OS` ones. They can be stored in the CI/CD tool and even can be stored as not readable by the users.
 
 `Cypress` can read automatically the `OS` environment variables if we create the variables starting with `CYPRESS_` or `cypress_`, and we can retrieve the values the same way as if we created them in the configuration file.
 
@@ -90,8 +91,61 @@ config.env.HOST
 config.env.api_server
 ```
 
+### Postgres Connection
+When creating *E2E* tests there are some issues testing under a mutable environment, in some cases the information in the environment is generated by a 3rd party or by hardware out of the testing control. With this type of context is hard to add *E2E* tests and to add the most coverage to the project, one way to add some more coverage can be interacting with the environment database, or with 3rd party databases where we can retrieve or add data to bypass or to assert.
+
+For accessing to a `Postgresql` can be used the `pg` package that is a pure *JavaScript* client with some abstractions that enables the connection and query to this type of databases. To implement this and to handle the async operation one way is to use define `Cypress tasks` in the config file and the `.then()` function to wait and use the data retrieved.
+
+`cypress.config.ts`
+```
+import { Client } from 'pg';
+import Query from 'pg/lib/query';
+
+on('task', {
+	async connectDB() {
+		const client: typeof Client = new Client({
+			host:     config.env.db_host,
+			port:     config.env.db_port,
+			database: config.env.db_dbname,
+			user:     config.env.db_user,
+			password: config.env.db_passwd,
+			ssl:      true
+		});
+
+		await client.connect();
+
+		const res: Query = await client.query('SELECT * FROM thetable order by created_at desc');
+
+		await client.end();
+
+		return res.rows[0];
+	}
+});
+```
+
+`test.cy.ts`
+```
+cy.visit('/');
+
+cy.task('connectDB')
+	.then((row: unknown) => {
+		cy.log(row['data']);
+		
+		cy.get('#input')
+			.type(row['data']);
+	});
+```
+
+Links to the `pg` official repository are in the [Links](#links) section.
+
+There are still some tests to be done to better understand how to implement this in real tests and how useful this can be.
+
+There is an issue using this package related with certificates, to bypass it we can use the `NODE_TLS_REJECT_UNAUTHORIZED` environment variable. The variable should be set to `0` in the environment before stating the tests.
+
+- `export NODE_TLS_REJECT_UNAUTHORIZED=0 && yarn cy:open:chrome`
+
 ## Contribute
-If a you want to change, correct, improve the project create an `issue` in the project `Issues` screen with the proposal and the necessery documentation. If the proposal or correction has already the implementation developed link the branch with the change in the `issue`.
+If a you want to change, correct, improve the project create an `issue` in the project `Issues` screen with the proposal and the necessary documentation. If the proposal or correction has already the implementation developed link the branch with the change in the `issue`.
 
 ## Appendix
 
@@ -218,6 +272,8 @@ This rule requires a newline after each call in a method chain or deep member ac
 - [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [Typescript](https://www.typescriptlang.org/)
 - [ESLint](https://eslint.org/docs/latest/rules/)
+- [pg](https://github.com/brianc/node-postgres)
+- [pg FAQ](https://github.com/brianc/node-postgres/wiki/FAQ)
 
 ### Steps to create this proj from zero
 1. yarn init
