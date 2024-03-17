@@ -11,8 +11,8 @@
 		]
 	},
 	"include": [
-		"**/*.ts",
-		"../cypress.d.ts",
+		"cypress/**/*.ts",
+		"cypress.d.ts",
 		"@simonsmith/cypress-image-snapshot/types"
 	]
 }
