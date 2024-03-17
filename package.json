@@ -2,7 +2,7 @@
 	"name": "cypress-e2e-starter",
 	"version": "1.0.0",
 	"repository": "git@github.com:alexandrepasc/cypress-e2e-starter.git",
-	"author": "Alexandre Pascoal <apascoal@ubiwhere.com>",
+	"author": "Alexandre Pascoal <alexandre.pascoal@gmail.com>",
 	"license": "MIT",
 	"scripts": {
 		"cy:open": "cypress open --e2e",
