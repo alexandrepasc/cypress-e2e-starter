@@ -1,9 +1,19 @@
 {
-    "editor.detectIndentation": false,
+	"editor.detectIndentation": false,
 	"editor.insertSpaces": false,
 	"editor.tabSize": 4,
-    "eslint.validate": [
-        "typescript",
-        "javascript"
-    ]
+	"eslint.validate": [
+		"typescript",
+		"javascript"
+	],
+	"eslint.enable": true,
+	"eslint.format.enable": true,
+	"eslint.lintTask.enable": true,
+	"eslint.run": "onSave",
+	"[typescript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"editor.formatOnType": true
 }
