@@ -13,13 +13,13 @@
 		"cy:run:firefox": "cypress run --e2e --browser firefox"
 	},
 	"devDependencies": {
-		"@simonsmith/cypress-image-snapshot": "^8.1.1",
-		"@typescript-eslint/eslint-plugin": "^6.4.1",
-		"@typescript-eslint/parser": "^6.4.1",
-		"cypress": "^12.17.4",
-		"eslint": "^8.48.0",
-		"eslint-plugin-cypress": "^2.14.0",
+		"@simonsmith/cypress-image-snapshot": "^9.0.1",
+		"@typescript-eslint/eslint-plugin": "^7.2.0",
+		"@typescript-eslint/parser": "^7.2.0",
+		"cypress": "^13.7.0",
+		"eslint": "^8.57.0",
+		"eslint-plugin-cypress": "^2.15.1",
 		"pg": "^8.11.3",
-		"typescript": "^5.2.2"
+		"typescript": "^5.4.2"
 	}
 }

@@ -47,7 +47,7 @@ To be able to use this project [Node.js](https://nodejs.org/en) and [yarn](https
 
 This project, besides the main objective described in the [Introduction](#introduction), has the idea of setting some structure to organize the files, linting rules to have the code clean, and to implement the `Page Object Model (POM)`.
 
-To lint the project the *ESLint* is set in place with some rules configured in the file `.eslintrc.json` and the rules could be changed, removed or add more. If the *IDE* used is the *VS Code* the [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extension could be installed and configured to give feedback if some rule is broken. Some *VS Code* configurations are already committed in the project, as some configurations for the extension.
+To lint the project the *ESLint* is set in place with some rules configured in the file `.eslintrc.json` and the rules could be changed, removed or add more. If the *IDE* used is the *VS Code*/*VS Codium* the [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extension could be installed and configured to give feedback if some rule is broken. Some *VS Code* configurations are already committed in the project, as some configurations for the extension.
 
 To be comfortable using this we should have some knowledge on the OS that is using, and knowledge in the tools that are used.
 
