@@ -283,6 +283,7 @@ Enforcing naming conventions helps keep the codebase consistent, and reduces ove
 
 ### Links
 - [Cypress](https://www.cypress.io/)
+- [Cypress Writing and Organizing Tests](https://docs.cypress.io/guides/core-concepts/writing-and-organizing-tests)
 - [Cypress configuration](https://docs.cypress.io/guides/references/configuration)
 - [Cypress typescript](https://docs.cypress.io/guides/tooling/typescript-support)
 - [Cypress plugins](https://docs.cypress.io/plugins)
@@ -292,6 +293,8 @@ Enforcing naming conventions helps keep the codebase consistent, and reduces ove
 - [ESLint](https://eslint.org/docs/latest/rules/)
 - [pg](https://github.com/brianc/node-postgres)
 - [pg FAQ](https://github.com/brianc/node-postgres/wiki/FAQ)
+- [Faker](https://fakerjs.dev/)
+- [cypress-mochawesome-reporter](https://github.com/LironEr/cypress-mochawesome-reporter)
 
 ### Steps to create this proj from zero
 1. yarn init
