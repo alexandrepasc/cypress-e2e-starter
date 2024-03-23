@@ -260,7 +260,7 @@ Enforcing naming conventions helps keep the codebase consistent, and reduces ove
 - "ignoreCase": true,
 - "ignoreDeclarationSort": false,
 - "ignoreMemberSort": false,
-- "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+- "memberSyntaxSortOrder": ["none", "all", "single", "multiple"],
 - "allowSeparatedGroups": true
 
 #### cypress/no-assigning-return-values

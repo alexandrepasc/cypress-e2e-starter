@@ -135,8 +135,8 @@
 				"memberSyntaxSortOrder": [
 					"none",
 					"all",
-					"multiple",
-					"single"
+					"single",
+					"multiple"
 				],
 				"allowSeparatedGroups": true
 			}
