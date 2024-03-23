@@ -1,37 +1,42 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": "latest"
-    },
-    "plugins": [
-        "@typescript-eslint",
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended"
+	],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": "latest"
+	},
+	"plugins": [
+		"@typescript-eslint",
 		"cypress"
-    ],
-    "rules": {
-        "indent": [
-            "error",
-            "tab"
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ],
+	],
+	"ignorePatterns": [
+		"**/node_modules",
+		"**/.vscode",
+		"**/scripts"
+	],
+	"rules": {
+		"indent": [
+			"error",
+			"tab"
+		],
+		"linebreak-style": [
+			"error",
+			"unix"
+		],
+		"quotes": [
+			"error",
+			"single"
+		],
+		"semi": [
+			"error",
+			"always"
+		],
 		"camelcase": [
 			"error"
 		],
@@ -41,7 +46,9 @@
 		],
 		"max-len": [
 			"error",
-			{ "code": 100 }
+			{
+				"code": 150
+			}
 		],
 		"no-mixed-spaces-and-tabs": [
 			"error"
@@ -51,11 +58,17 @@
 		],
 		"no-multiple-empty-lines": [
 			"error",
-			{ "max": 1, "maxBOF": 0, "maxEOF": 1}
+			{
+				"max": 1,
+				"maxBOF": 0,
+				"maxEOF": 1
+			}
 		],
 		"object-curly-newline": [
 			"error",
-			{ "multiline": true }
+			{
+				"multiline": true
+			}
 		],
 		"@typescript-eslint/typedef": [
 			"error",
@@ -77,7 +90,10 @@
 		],
 		"comma-spacing": [
 			"error",
-			{ "before": false, "after": true }
+			{
+				"before": false,
+				"after": true
+			}
 		],
 		"func-call-spacing": [
 			"error",
@@ -85,17 +101,51 @@
 		],
 		"key-spacing": [
 			"error",
-			{ "align": "value", "afterColon": true }
+			{
+				"align": "value",
+				"afterColon": true
+			}
 		],
 		"newline-per-chained-call": [
 			"error",
-			{ "ignoreChainWithDepth": 1 }
+			{
+				"ignoreChainWithDepth": 1
+			}
 		],
-        "cypress/no-assigning-return-values": "error",
-        "cypress/no-unnecessary-waiting": "error",
-        "cypress/assertion-before-screenshot": "warn",
-        "cypress/no-force": "warn",
-        "cypress/no-async-tests": "error",
-        "cypress/no-pause": "error"
-    }
+		"@typescript-eslint/naming-convention": [
+			"error",
+			{
+				"selector": [
+					"variable",
+					"function"
+				],
+				"format": [
+					"camelCase"
+				],
+				"leadingUnderscore": "forbid",
+				"trailingUnderscore": "forbid"
+			}
+		],
+		"sort-imports": [
+			"error",
+			{
+				"ignoreCase": true,
+				"ignoreDeclarationSort": false,
+				"ignoreMemberSort": false,
+				"memberSyntaxSortOrder": [
+					"none",
+					"all",
+					"multiple",
+					"single"
+				],
+				"allowSeparatedGroups": true
+			}
+		],
+		"cypress/no-assigning-return-values": "error",
+		"cypress/no-unnecessary-waiting": "error",
+		"cypress/assertion-before-screenshot": "warn",
+		"cypress/no-force": "warn",
+		"cypress/no-async-tests": "error",
+		"cypress/no-pause": "error"
+	}
 }

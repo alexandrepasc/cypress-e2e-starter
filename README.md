@@ -28,6 +28,8 @@
 			- [func-call-spacing](#func-call-spacing)
 			- [key-spacing](#key-spacing)
 			- [newline-per-chained-call](#newline-per-chained-call)
+			- [@typescript-eslint/naming-convention](#typescript-eslintnaming-convention)
+			- [sort-imports](#sort-imports)
 			- [cypress/no-assigning-return-values](#cypressno-assigning-return-values)
 			- [cypress/no-unnecessary-waiting](#cypressno-unnecessary-waiting)
 			- [cypress/assertion-before-screenshot](#cypressassertion-before-screenshot)
@@ -182,7 +184,7 @@ This rule is aimed at preventing bugs and increasing code clarity by ensuring th
 #### max-len
 This rule enforces a maximum line length to increase code readability and maintainability. The length of a line is defined as the number of Unicode characters in the line.
 - error
-- code: 100
+- code: 150
 
 #### no-mixed-spaces-and-tabs
 This rule disallows mixed spaces and tabs for indentation.
@@ -244,6 +246,22 @@ This rule enforces consistent spacing between keys and values in object literal 
 This rule requires a newline after each call in a method chain or deep member access. Computed property accesses such as instance[something] are excluded.
 - error
 - "ignoreChainWithDepth": 1
+
+#### @typescript-eslint/naming-convention
+Enforcing naming conventions helps keep the codebase consistent, and reduces overhead when thinking about how to name a variable.
+- error
+- "selector": ["variable", "function"]
+- "format": ["camelCase"]
+- "leadingUnderscore": "forbid"
+- "trailingUnderscore": "forbid"
+
+#### sort-imports
+- error
+- "ignoreCase": true,
+- "ignoreDeclarationSort": false,
+- "ignoreMemberSort": false,
+- "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+- "allowSeparatedGroups": true
 
 #### cypress/no-assigning-return-values
 - error

@@ -13,10 +13,12 @@
 		"cy:run:firefox": "cypress run --e2e --browser firefox"
 	},
 	"devDependencies": {
+		"@faker-js/faker": "^8.4.1",
 		"@simonsmith/cypress-image-snapshot": "^9.0.1",
 		"@typescript-eslint/eslint-plugin": "^7.2.0",
 		"@typescript-eslint/parser": "^7.2.0",
 		"cypress": "^13.7.0",
+		"cypress-mochawesome-reporter": "^3.8.2",
 		"eslint": "^8.57.0",
 		"eslint-plugin-cypress": "^2.15.1",
 		"pg": "^8.11.3",

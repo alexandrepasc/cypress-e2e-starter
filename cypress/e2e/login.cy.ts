@@ -1,5 +1,6 @@
 ///<reference types="cypress"/>
 
+import {faker} from '@faker-js/faker';
 import Login from '../pages/login';
 
 describe('Login test', () => {
@@ -40,15 +41,17 @@ describe('Login test', () => {
 	});
 
 	it('Login request validation', () => {
+		const mail: string = faker.internet.email();
+		const password: string = faker.internet.password();
 
 		login.api.postLogin({
 			reqExpect: [
-				{email: 'username'},
-				{password: 'password'}
+				{email: mail},
+				{password: password}
 			]
 		});
 
-		login.fillLoginForm();
+		login.fillLoginForm(mail, password);
 
 		login.loginBtn()
 			.click();
