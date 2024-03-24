@@ -7,6 +7,7 @@
 	- [Build and Test](#build-and-test)
 		- [Store Credentials](#store-credentials)
 		- [Postgres Connection](#postgres-connection)
+		- [Extend Configuration File](#extend-configuration-file)
 	- [Contribute](#contribute)
 	- [Appendix](#appendix)
 		- [Rules](#rules)
@@ -145,6 +146,21 @@ There are still some tests to be done to better understand how to implement this
 There is an issue using this package related with certificates, to bypass it we can use the `NODE_TLS_REJECT_UNAUTHORIZED` environment variable. The variable should be set to `0` in the environment before stating the tests.
 
 - `export NODE_TLS_REJECT_UNAUTHORIZED=0 && yarn cy:open:chrome`
+
+### Extend Configuration File
+In case the need to have and maintain multiple configuration files, like when we need to have a configuration to run locally and another to run in a pipeline, the number of environment variables and *Cypress* configurations could keep building in as the cost to maintain. One approach to keep this simple and easy to maintain is to create a base configuration file that has all the sharable configurations and use that to extend the other configurations.
+
+There is some experiment of this approach with the base file `cypress.config.js` that has the shared configuration and is used to run the tests locally during the tests development/maintenance. To run the tests in headless mode and in a pipeline a test report is an important feature, so there is another configuration file `cypress.ex.config.ts` that import the base one and add the configurations related to the report.
+
+At the moment didn't found a way to better handle the plugins, or all the plugins are implemented in base file and they will be imported to the other one. In case new plugins need to be added to the new file, it is required to add all the base plugins and the new ones so basically copying the `setupNodeEvents` block from the base to the new.
+
+To run tests with the base configuration file, use the following scripts:
+- `yarn cy:open:chrome`
+- `yarn cy:run:chrome`
+
+To run the new configuration extending the base use:
+- `yarn ex:run:chrome`
+- `yarn ex:run:firefox`
 
 ## Contribute
 If a you want to change, correct, improve the project create an `issue` in the project `Issues` screen with the proposal and the necessary documentation. If the proposal or correction has already the implementation developed link the branch with the change in the `issue`.
