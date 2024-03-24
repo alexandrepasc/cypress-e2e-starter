@@ -12,7 +12,14 @@
 		"cy:run:chrome": "cypress run --e2e --browser chrome",
 		"cy:run:firefox": "cypress run --e2e --browser firefox",
 		"ex:run:chrome": "cypress run --e2e --browser chrome --config-file cypress.ex.config.ts --reporter-options 'reportFilename=\"[status]_[datetime]-e2e-chrome\"'",
-		"ex:run:firefox": "cypress run --e2e --browser firefox --config-file cypress.ex.config.ts --reporter-options 'reportFilename=\"[status]_[datetime]-e2e-firefox\"'"
+		"ex:run:firefox": "cypress run --e2e --browser firefox --config-file cypress.ex.config.ts --reporter-options 'reportFilename=\"[status]_[datetime]-e2e-firefox\"'",
+		"prepare": "husky install"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "echo \"[Husky] pre-commit\" && exit 1",
+			"commit-msg": "echo \"[Husky] commit-msg\" && exit 1"
+		}
 	},
 	"devDependencies": {
 		"@faker-js/faker": "^8.4.1",
@@ -23,6 +30,8 @@
 		"cypress-mochawesome-reporter": "^3.8.2",
 		"eslint": "^8.57.0",
 		"eslint-plugin-cypress": "^2.15.1",
+		"husky": "^8.0.0",
+		"mocha": "^10.3.0",
 		"pg": "^8.11.3",
 		"typescript": "^5.4.2"
 	}
