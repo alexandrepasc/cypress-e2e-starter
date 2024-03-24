@@ -165,6 +165,7 @@ To run the new configuration extending the base use:
 
 ### Husky
 
+
 ## Contribute
 If a you want to change, correct, improve the project create an `issue` in the project `Issues` screen with the proposal and the necessary documentation. If the proposal or correction has already the implementation developed link the branch with the change in the `issue`.
 
