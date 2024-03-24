@@ -1,12 +1,12 @@
 ///<reference types="cypress"/>
 
+import { InterceptorProps } from '../../support/types';
 import {
 	DictMatcher,
 	RouteMatcherOptions,
 	StaticResponse,
 	StringMatcher
 } from 'cypress/types/net-stubbing';
-import { InterceptorProps } from '../../support/types';
 
 interface Props {
 	queryParameters?: DictMatcher<StringMatcher>,

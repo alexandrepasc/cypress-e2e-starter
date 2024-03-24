@@ -1,7 +1,6 @@
 import {addMatchImageSnapshotPlugin} from '@simonsmith/cypress-image-snapshot/plugin';
 import { defineConfig } from 'cypress';
 
-// TODO: add report generation
 export default defineConfig({
 	watchForFileChanges: false,
 	viewportWidth:       1920,
