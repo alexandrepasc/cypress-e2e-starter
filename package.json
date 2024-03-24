@@ -13,11 +13,11 @@
 		"cy:run:firefox": "cypress run --e2e --browser firefox",
 		"ex:run:chrome": "cypress run --e2e --browser chrome --config-file cypress.ex.config.ts --reporter-options 'reportFilename=\"[status]_[datetime]-e2e-chrome\"'",
 		"ex:run:firefox": "cypress run --e2e --browser firefox --config-file cypress.ex.config.ts --reporter-options 'reportFilename=\"[status]_[datetime]-e2e-firefox\"'",
-		"prepare": "husky install"
+		"prepare": "husky && husky install"
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "echo \"[Husky] pre-commit\"",
+			"pre-commit": "eslint *",
 			"commit-msg": "echo \"[Husky] commit-msg\""
 		}
 	},
