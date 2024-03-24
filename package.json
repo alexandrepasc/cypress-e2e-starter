@@ -10,7 +10,9 @@
 		"cy:open:firefox": "cypress open --e2e --browser firefox",
 		"cy:run": "cypress run --e2e",
 		"cy:run:chrome": "cypress run --e2e --browser chrome",
-		"cy:run:firefox": "cypress run --e2e --browser firefox"
+		"cy:run:firefox": "cypress run --e2e --browser firefox",
+		"ex:run:chrome": "cypress run --e2e --browser chrome --config-file cypress.ex.config.ts --reporter-options 'reportFilename=\"[status]_[datetime]-e2e-chrome\"'",
+		"ex:run:firefox": "cypress run --e2e --browser firefox --config-file cypress.ex.config.ts --reporter-options 'reportFilename=\"[status]_[datetime]-e2e-firefox\"'"
 	},
 	"devDependencies": {
 		"@faker-js/faker": "^8.4.1",
