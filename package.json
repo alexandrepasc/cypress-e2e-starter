@@ -17,8 +17,8 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "echo \"[Husky] pre-commit\" && exit 1",
-			"commit-msg": "echo \"[Husky] commit-msg\" && exit 1"
+			"pre-commit": "echo \"[Husky] pre-commit\"",
+			"commit-msg": "echo \"[Husky] commit-msg\""
 		}
 	},
 	"devDependencies": {
