@@ -15,9 +15,9 @@ EXIT=0
 printf "Validating Javascript:\n"
 
 # Check for eslint
-FILE_ESLINT="$FILE_PATH/../../node_modules/eslint/bin/eslint.js"
+FILE_ESLINT="$FILE_PATH/../node_modules/eslint/bin/eslint.js"
 if [ ! -f "$FILE_ESLINT" ]; then
-	printf "Please install ESlint"
+	printf "Please install ESlint\n"
 	exit 1
 fi
 
