@@ -1,0 +1,19 @@
+#!/bin/bash
+
+maxMsgLength=122
+
+a=$(echo $(cat "$1"))
+n=${#a}
+
+if [[ $n -gt $maxMsgLength ]]; then
+    echo -e "[commit-msg-hook] Your commit message exceeds the max characters length of $maxMsgLength.\nPlease review the commit message.\nMsg: $n" >&2
+	exit 1
+fi
+
+REGEX_ISSUE_ID="^(fix|feat|docs|test|chore|ci|perf|style|build|refactor)(?:(\()([a-zA-Z]+)(\)))?:(?:(\s#[0-9]+))?(\s[A-zÀ-ÿ])([A-zÀ-ÿ0-9\s:-?#$&\(-\/]+)$"
+MESSAGE_EXAMPLES="\n\nExamples:\nfix: Something\ntest(login): Add some test\nfeat: #1 Ref to an issue\nchore(pipeline): #3 Something in a pipeline"
+
+if ! grep -qP "$REGEX_ISSUE_ID" "$1"; then
+    echo -e "[commit-msg-hook] Your commit message is illegal.\nPlease rename your message using following regex: $REGEX_ISSUE_ID$MESSAGE_EXAMPLES" >&2
+    exit 1
+fi

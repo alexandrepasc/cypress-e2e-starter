@@ -5,19 +5,19 @@ STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep "\.ts\{0,1
 FILE_PATH="$(dirname "$(realpath $0)")"
 
 if [[ "$STAGED_FILES" = "" ]]; then
-	printf "\033[0;34mNo files to review\033[0m\n"
+	printf "No files to review\n"
 	exit 0
 fi
 
 PASS=true
 EXIT=0
 
-printf "\033[0;32mValidating Javascript:\033[0m\n"
+printf "Validating Javascript:\n"
 
 # Check for eslint
-FILE_ESLINT="$FILE_PATH/../../node_modules/eslint/bin/eslint.js"
+FILE_ESLINT="$FILE_PATH/../node_modules/eslint/bin/eslint.js"
 if [ ! -f "$FILE_ESLINT" ]; then
-	printf "\033[0;31mPlease install ESlint\033[0m"
+	printf "Please install ESlint\n"
 	exit 1
 fi
 
@@ -26,7 +26,7 @@ do
   FILE_HELP="$FILE_PATH/../../$FILE"
 
   if grep -q "it.only(" "$FILE_HELP" || grep -q "describe.only(" "$FILE_HELP"; then
-    printf "\033[0;31mRemove the only from the test file $FILE.\033[0m\n"
+    printf "Remove the only from the test file $FILE."
 	PASS=false
 	EXIT=1
   fi
@@ -34,9 +34,9 @@ do
   yarn run eslint "$FILE"
 
   if [[ "$?" == 0 ]]; then
-    printf "\t\033[32mESLint Passed: $FILE\033[0m\n"
+    printf "ESLint Passed: $FILE\n"
   else
-    printf "\t\033[41mESLint Failed: $FILE\033[0m\n"
+    printf "ESLint Failed: $FILE\n"
     PASS=false
 	EXIT=1
   fi
@@ -45,10 +45,10 @@ done
 printf "\nJavascript validation completed!\n"
 
 if ! $PASS; then
-  printf "\033[41mCOMMIT FAILED:\033[0m Your commit contains files that should pass ESLint but do not. Please fix the ESLint errors and try again.\n"
+  printf "COMMIT FAILED: Your commit contains files that should pass ESLint but do not. Please fix the ESLint errors and try again.\n"
   exit 1
 else
-  printf "\033[42mCOMMIT SUCCEEDED\033[0m\n"
+  printf "COMMIT SUCCEEDED\n"
 fi
 
 exit $EXIT
