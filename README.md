@@ -59,12 +59,6 @@ To be comfortable using this we should have some knowledge on the OS that is usi
 Install the project dependencies, they are all defined in the `package.json`, so just run in the project root path:
 - `yarn`
 
-Execute the `setup-environment` script to set the pre-commit hook to the `.git` folder:
-- `./scripts/setup-environment.sh`
-
-In case the `setup-environment` is not executable execute the following command to give execution permissions to the file:
-- `chmod +x scripts/setup-environment.sh`
-
 The `package.json` file has some already created shortcuts to in the `scripts` section to ease the use of `Cypress`. More shortcuts can be added, or change the ones that were already created.
 
 If using the *VS Code* in some cases it will confuse the `Cypress` commands with other libraries when giving the help, to prevent this we should add 1 line at the top of every file that will have `Cypress` code. So in every file add the following line:
@@ -164,7 +158,11 @@ To run the new configuration extending the base use:
 - `yarn ex:run:firefox`
 
 ### Husky
+To be able to force some rules regarding code format, commit messages, etc... we can use the *GIT Hooks* to add scripts that are triggered in each stage, this can be used to execute checks in the code, in the message, or even run tests.
 
+In a first iteration, this project had a script to run the linter and another script that should be executed to set the previous as a hook. After some investigation the *Husky* package appeared. *Husky* will basically manage the hook scripts without the need to to set them in place, the scripts are stored in the `.husky` folder and it will handle the integration with *GIT Hooks*.
+
+Currently the project has two hooks integrated with *Husky* and it's only need to install the project packages and the package will handle the rest.
 
 ## Contribute
 If a you want to change, correct, improve the project create an `issue` in the project `Issues` screen with the proposal and the necessary documentation. If the proposal or correction has already the implementation developed link the branch with the change in the `issue`.
