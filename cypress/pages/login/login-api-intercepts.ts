@@ -1,21 +1,10 @@
 ///<reference types="cypress"/>
 
-import { InterceptorProps } from '../../support/types';
+import { InterceptorProps, InterceptorsProps } from '../../support/types';
 import {
-	DictMatcher,
 	RouteMatcherOptions,
-	StaticResponse,
-	StringMatcher
+	StaticResponse
 } from 'cypress/types/net-stubbing';
-
-interface Props {
-	queryParameters?: DictMatcher<StringMatcher>,
-	interceptNumber?: number,
-	reqExpect?:       object[],
-	responseCode?:    number,
-	responseFile?:    string,
-	resExpect?:       object[],
-}
 
 class Interceptors {
 
@@ -29,7 +18,7 @@ class Interceptors {
 	*     resExpect?:       object[],
 	* }
 	*/
-	postLogin(props: Props) {
+	postLogin(props: InterceptorsProps) {
 		const method: string = 'POST';
 		const endpoint: string = '/api/v1/public/user/login/';
 		const filePath: string = 'user/login/';
