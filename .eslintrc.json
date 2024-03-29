@@ -5,7 +5,8 @@
 	},
 	"extends": [
 		"eslint:recommended",
-		"plugin:@typescript-eslint/recommended"
+		"plugin:@typescript-eslint/recommended",
+		"plugin:jsdoc/recommended-typescript-flavor"
 	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
@@ -13,7 +14,8 @@
 	},
 	"plugins": [
 		"@typescript-eslint",
-		"cypress"
+		"cypress",
+		"jsdoc"
 	],
 	"ignorePatterns": [
 		"**/node_modules",

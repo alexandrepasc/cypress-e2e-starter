@@ -11,6 +11,7 @@ fi
 
 PASS=true
 EXIT=0
+FAILED_FILES=""
 
 printf "Validating Javascript:\n"
 
@@ -23,10 +24,10 @@ fi
 
 for FILE in $STAGED_FILES
 do
-  FILE_HELP="$FILE_PATH/../../$FILE"
+  FILE_HELP="$FILE_PATH/../$FILE"
 
   if grep -q "it.only(" "$FILE_HELP" || grep -q "describe.only(" "$FILE_HELP"; then
-    printf "Remove the only from the test file $FILE."
+    printf "Remove the only from the test file $FILE.\n"
 	PASS=false
 	EXIT=1
   fi
@@ -34,9 +35,10 @@ do
   yarn run eslint "$FILE"
 
   if [[ "$?" == 0 ]]; then
-    printf "ESLint Passed: $FILE\n"
+    printf "\nESLint Passed: $FILE\n"
   else
-    printf "ESLint Failed: $FILE\n"
+    printf "\nESLint Failed: $FILE\n"
+	FAILED_FILES="$FAILED_FILES$FILE\n"
     PASS=false
 	EXIT=1
   fi
@@ -45,10 +47,11 @@ done
 printf "\nJavascript validation completed!\n"
 
 if ! $PASS; then
-  printf "COMMIT FAILED: Your commit contains files that should pass ESLint but do not. Please fix the ESLint errors and try again.\n"
+  printf "\nCOMMIT FAILED: Your commit contains files that should pass ESLint but do not. Please fix the ESLint errors and try again.\n"
+  printf "$FAILED_FILES\n"
   exit 1
 else
-  printf "COMMIT SUCCEEDED\n"
+  printf "\nCOMMIT SUCCEEDED\n"
 fi
 
 exit $EXIT
