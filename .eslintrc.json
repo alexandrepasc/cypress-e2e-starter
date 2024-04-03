@@ -14,6 +14,7 @@
 	},
 	"plugins": [
 		"@typescript-eslint",
+		"@stylistic/js",
 		"cypress",
 		"jsdoc"
 	],
@@ -141,6 +142,89 @@
 					"multiple"
 				],
 				"allowSeparatedGroups": true
+			}
+		],
+		"@stylistic/js/padding-line-between-statements": [
+			"error",
+			{
+				"blankLine": "always",
+				"prev": "expression",
+				"next": "expression"
+			},
+			{
+				"blankLine": "always",
+				"prev": "if",
+				"next": "if"
+			},
+			{
+				"blankLine": "always",
+				"prev": "expression",
+				"next": "if"
+			},
+			{
+				"blankLine": "always",
+				"prev": "if",
+				"next": "expression"
+			},
+			{
+				"blankLine": "always",
+				"prev": "var",
+				"next": "if"
+			},
+			{
+				"blankLine": "always",
+				"prev": "if",
+				"next": "var"
+			},
+			{
+				"blankLine": "always",
+				"prev": "const",
+				"next": "if"
+			},
+			{
+				"blankLine": "always",
+				"prev": "if",
+				"next": "const"
+			},
+			{
+				"blankLine": "always",
+				"prev": "let",
+				"next": "if"
+			},
+			{
+				"blankLine": "always",
+				"prev": "if",
+				"next": "let"
+			},
+			{
+				"blankLine": "always",
+				"prev": "var",
+				"next": "expression"
+			},
+			{
+				"blankLine": "always",
+				"prev": "let",
+				"next": "expression"
+			},
+			{
+				"blankLine": "always",
+				"prev": "const",
+				"next": "expression"
+			},
+			{
+				"blankLine": "always",
+				"prev": "expression",
+				"next": "var"
+			},
+			{
+				"blankLine": "always",
+				"prev": "expression",
+				"next": "let"
+			},
+			{
+				"blankLine": "always",
+				"prev": "expression",
+				"next": "const"
 			}
 		],
 		"cypress/no-assigning-return-values": "error",
