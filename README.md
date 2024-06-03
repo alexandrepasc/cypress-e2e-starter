@@ -32,7 +32,7 @@
 			- [newline-per-chained-call](#newline-per-chained-call)
 			- [@typescript-eslint/naming-convention](#typescript-eslintnaming-convention)
 			- [sort-imports](#sort-imports)
-			- [@stylistic/js/padding-line-between-statements](#stylisticjspadding-line-between-statements)
+			- [@stylistic/ts/padding-line-between-statements](#stylistictspadding-line-between-statements)
 			- [cypress/no-assigning-return-values](#cypressno-assigning-return-values)
 			- [cypress/no-unnecessary-waiting](#cypressno-unnecessary-waiting)
 			- [cypress/assertion-before-screenshot](#cypressassertion-before-screenshot)
@@ -282,7 +282,7 @@ Enforcing naming conventions helps keep the codebase consistent, and reduces ove
 - "memberSyntaxSortOrder": ["none", "all", "single", "multiple"],
 - "allowSeparatedGroups": true
 
-#### @stylistic/js/padding-line-between-statements
+#### @stylistic/ts/padding-line-between-statements
 - error
 - "blankLine": "always"
 - "prev": "expression", "next": "expression"
