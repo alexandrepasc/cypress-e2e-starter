@@ -32,6 +32,7 @@
 			- [newline-per-chained-call](#newline-per-chained-call)
 			- [@typescript-eslint/naming-convention](#typescript-eslintnaming-convention)
 			- [sort-imports](#sort-imports)
+			- [@stylistic/js/padding-line-between-statements](#stylisticjspadding-line-between-statements)
 			- [cypress/no-assigning-return-values](#cypressno-assigning-return-values)
 			- [cypress/no-unnecessary-waiting](#cypressno-unnecessary-waiting)
 			- [cypress/assertion-before-screenshot](#cypressassertion-before-screenshot)
@@ -281,6 +282,26 @@ Enforcing naming conventions helps keep the codebase consistent, and reduces ove
 - "memberSyntaxSortOrder": ["none", "all", "single", "multiple"],
 - "allowSeparatedGroups": true
 
+#### @stylistic/js/padding-line-between-statements
+- error
+- "blankLine": "always"
+- "prev": "expression", "next": "expression"
+- "prev": "if", "next": "if"
+- "prev": "expression", "next": "if"
+- "prev": "if", "next": "expression"
+- "prev": "var", "next": "if"
+- "prev": "if", "next": "var"
+- "prev": "const", "next": "if"
+- "prev": "if", "next": "const"
+- "prev": "let", "next": "if"
+- "prev": "if", "next": "let"
+- "prev": "var", "next": "expression"
+- "prev": "let", "next": "expression"
+- "prev": "const", "next": "expression"
+- "prev": "expression", "next": "var"
+- "prev": "expression", "next": "let"
+- "prev": "expression", "next": "const"
+
 #### cypress/no-assigning-return-values
 - error
 
@@ -309,6 +330,7 @@ Enforcing naming conventions helps keep the codebase consistent, and reduces ove
 - [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [Typescript](https://www.typescriptlang.org/)
 - [ESLint](https://eslint.org/docs/latest/rules/)
+- [ESLint Stylistic](https://eslint.style/)
 - [pg](https://github.com/brianc/node-postgres)
 - [pg FAQ](https://github.com/brianc/node-postgres/wiki/FAQ)
 - [Faker](https://fakerjs.dev/)
