@@ -14,7 +14,7 @@
 	},
 	"plugins": [
 		"@typescript-eslint",
-		"@stylistic/js",
+		"@stylistic/ts",
 		"cypress",
 		"jsdoc"
 	],
@@ -144,7 +144,7 @@
 				"allowSeparatedGroups": true
 			}
 		],
-		"@stylistic/js/padding-line-between-statements": [
+		"@stylistic/ts/padding-line-between-statements": [
 			"error",
 			{
 				"blankLine": "always",
