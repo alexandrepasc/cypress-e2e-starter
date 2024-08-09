@@ -13,6 +13,8 @@
 	"include": [
 		"cypress/**/*.ts",
 		"cypress.d.ts",
+		"cypress.config.ts",
+		"eslint.config.mjs",
 		"@simonsmith/cypress-image-snapshot/types"
 	]
 }
