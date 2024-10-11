@@ -13,3 +13,6 @@
 /cypress/downloads
 /cypress/snapshots/**/__diff_output__
 /reports
+
+# lint
+.eslintcache

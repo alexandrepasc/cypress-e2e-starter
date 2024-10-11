@@ -15,24 +15,28 @@
 		"ex:run:firefox": "cypress run --e2e --browser firefox --config-file cypress.ex.config.ts --reporter-options 'reportFilename=\"[status]_[datetime]-e2e-firefox\"'",
 		"prepare": "husky"
 	},
+	"lint-staged": {
+		"*.{ts,js,mjs}": "eslint --cache"
+	},
 	"devDependencies": {
 		"@commitlint/cli": "^19.5.0",
 		"@commitlint/config-conventional": "^19.5.0",
-		"@faker-js/faker": "^8.4.1",
+		"@faker-js/faker": "^9.0.3",
 		"@simonsmith/cypress-image-snapshot": "^9.1.0",
-		"@stylistic/eslint-plugin": "^2.6.2",
-		"@typescript-eslint/parser": "^8.0.1",
+		"@stylistic/eslint-plugin": "^2.9.0",
+		"@typescript-eslint/parser": "^8.8.1",
 		"conventional-changelog-atom": "^5.0.0",
-		"cypress": "^13.13.2",
+		"cypress": "^13.15.0",
 		"cypress-mochawesome-reporter": "^3.8.2",
-		"eslint": "^9.8.0",
-		"eslint-plugin-cypress": "^3.4.0",
-		"eslint-plugin-jsdoc": "^50.0.0",
+		"eslint": "^9.12.0",
+		"eslint-plugin-cypress": "^3.5.0",
+		"eslint-plugin-jsdoc": "^50.3.1",
 		"eslint-plugin-mocha": "^10.5.0",
 		"husky": "^9.1.6",
+		"lint-staged": "^15.2.10",
 		"mocha": "^10.7.3",
-		"pg": "^8.12.0",
-		"typescript": "^5.5.4",
-		"typescript-eslint": "^8.0.1"
+		"pg": "^8.13.0",
+		"typescript": "^5.6.3",
+		"typescript-eslint": "^8.8.1"
 	}
 }
