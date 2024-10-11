@@ -15,6 +15,9 @@
 		"ex:run:firefox": "cypress run --e2e --browser firefox --config-file cypress.ex.config.ts --reporter-options 'reportFilename=\"[status]_[datetime]-e2e-firefox\"'",
 		"prepare": "husky"
 	},
+	"lint-staged": {
+		"*.{ts,js,mjs}": "eslint --cache"
+	},
 	"devDependencies": {
 		"@commitlint/cli": "^19.5.0",
 		"@commitlint/config-conventional": "^19.5.0",
@@ -30,6 +33,7 @@
 		"eslint-plugin-jsdoc": "^50.0.0",
 		"eslint-plugin-mocha": "^10.5.0",
 		"husky": "^9.1.6",
+		"lint-staged": "^15.2.10",
 		"mocha": "^10.7.3",
 		"pg": "^8.12.0",
 		"typescript": "^5.5.4",
