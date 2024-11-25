@@ -19,6 +19,8 @@ export default defineConfig({
 			const onCustom: Cypress.PluginEvents = eventForwarder.on;
 
 			onCustom('after:run', async () => {
+				console.log('Merge JUnit results');
+
 				const outputFile: string = path.join(__dirname, 'junitreport.xml');
 
 				// merge the junit report files from the 'results' folder
