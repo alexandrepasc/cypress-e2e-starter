@@ -5,20 +5,8 @@ import { defineConfig } from 'cypress';
 
 export default defineConfig({
 	...base,
-	reporter:        'cypress-mochawesome-reporter',
-	reporterOptions: {
-		timestamp:           'isoDateTime',
-		reportDir:           'reports',
-		assetsDir:           'reports',
-		embeddedScreenshots: true,
-		inlineAssets:        true,
-		charts:              true,
-		inline:              true,
-		overwrite:           false,
-		saveHtml:            true,
-		saveJson:            true,
-	},
-	e2e: {
+	reporter: 'cypress-multi-reporters',
+	e2e:      {
 		...base.e2e,
 
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
