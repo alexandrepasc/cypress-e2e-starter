@@ -1,0 +1,20 @@
+{
+	"reporterEnabled": "cypress-mochawesome-reporter, mocha-junit-reporter",
+	"cypressMochawesomeReporterReporterOptions": {
+			"timestamp":           "isoDateTime",
+			"reportDir":           "reports",
+			"assetsDir":           "reports",
+			"embeddedScreenshots": true,
+			"inlineAssets": true,
+			"charts": true,
+			"inline": true,
+			"overwrite": false,
+			"saveHtml": true,
+			"saveJson": true,
+			"reportFilename": "[status]_[datetime]-e2e-edge"
+	},
+	"mochaJunitReporterReporterOptions": {
+			"mochaFile": "results/test-output-[hash].xml",
+			"toConsole": false
+	}
+}
